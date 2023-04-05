@@ -5,11 +5,54 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Best Bank | Scrimba</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+
+  <header>
+    <div class="heading-container">
+      <h1><span class="sr-only">Best Bank</span></h1>
+      <img src="./assets/bestbank_logo.png" alt="Best Bank logo">
+    </div>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#">Home</a></li>
+        <li class="nav-item"><a href="#">Payments</a></li>
+        <li class="nav-item"><a href="#">Savings</a></li>
+        <li class="nav-item"><a href="#">Financing</a></li>
+        <li class="nav-item"><a href="#">Stocks</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="wrapper">
+    <main>
+      <div class="button-container">
+        <button class="btn">Pay</button>
+        <button class="btn">Transfer</button>
+      </div>
+        <h2>Accounts</h2>
+        <div class="accounts-container">
+        <div class="account">
+          <h3>Main Account</h3>
+          <span id="main-balance">$6,700.56</span>
+        </div>
+        <div class="account">
+          <h3>Expenses</h3>
+          <span id="expenses-balance">$5,134.63</span>
+        </div>
+        <div class="account">
+          <h3>Savings</h3>
+          <span id="savings-balance">$36,500.12</span>
+        </div>
+      </div>
+
+    </main>
+
+  </div>  
+
   <script src="index.js"></script>    
 </body>
 </html>
