@@ -6,7 +6,9 @@ This is an implementation of the Best Bank solo project, as part of the Scrimba 
 
 ### Requirements
 
-- Each page of site should be hand-coded from scratch
+- Build from scratch, based on design file
+- Users should see hover states of clickable items
+
 - Responsive - View the optimal layout depending on their device's screen size
 - Utilize mobile-first design processes
 - Use Media queries to adjust styling for larger screens
