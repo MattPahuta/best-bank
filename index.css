@@ -100,9 +100,13 @@ h2 {
 .wrapper {
   margin-inline: auto;
   padding: 2.25rem 0;
-  /* max-width: 730px; */
-  max-width: 1096px;
+  max-width: 730px;
+  /* max-width: 1096px; */
   width: 100%;
+}
+
+.two-cols {
+  max-width: 1096px;
 }
 
 .btn {
@@ -216,7 +220,7 @@ header img {
   flex: 1;
 }
 
-.accounts-inner {
+.accounts {
   padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
@@ -247,7 +251,7 @@ header img {
 
 /* Spendings column */
 
-.spendings-inner {
+.spendings {
   padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
