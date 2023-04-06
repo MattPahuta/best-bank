@@ -52,3 +52,16 @@ const accounts = [
     spendings: []
   }
 ]
+
+
+document.getElementById('accounts-inner').addEventListener('click', (e) => {
+  if (e.target.id === 'main-account') {
+    console.log('main account clicked')
+  } else if (e.target.id === 'expenses-account') {
+    console.log('expenses account clicked')
+  } else if (e.target.id === 'savings-account') {
+    console.log('savings account clicked')
+  }
+});
+
+// update wrapper max-width to 1096px 

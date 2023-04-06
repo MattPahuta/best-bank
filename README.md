@@ -7,9 +7,9 @@ This is an implementation of the Best Bank solo project, as part of the Scrimba 
 ### Requirements
 
 - Build from scratch, based on design file
-- Users should see hover states of clickable items
+- Users should see hover states of clickable elements
+- Stretch: Add column to display spending data
+- Stretch: Add animated hover effect to buttons
+- Stretch: Fetch account/spending data from JS file
+- Stretch: Click on account to change view, update data
 
-- Responsive - View the optimal layout depending on their device's screen size
-- Utilize mobile-first design processes
-- Use Media queries to adjust styling for larger screens
-- See hover states for interactive elements

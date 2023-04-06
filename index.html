@@ -33,22 +33,50 @@
         <button class="btn">Pay</button>
         <button class="btn">Transfer</button>
       </div>
-        <h2>Accounts</h2>
-      <div class="accounts-container">
-        <div class="account selected">
-          <h3>Main Account</h3>
-          <span id="main-balance">$6,700.56</span>
-        </div>
-        <div class="account">
-          <h3>Expenses</h3>
-          <span id="expenses-balance">$5,134.63</span>
-        </div>
-        <div class="account">
-          <h3>Savings</h3>
-          <span id="savings-balance">$36,500.12</span>
-        </div>
-      </div>
 
+      <section class="accounts-container">
+        <!-- Accounts -->
+        <div id="accounts-outer" class="accounts-outer">
+          <h2>Accounts</h2>
+          <div id="accounts-inner" class="accounts-inner">
+            <div id="main-account" class="account selected">
+              <h3>Main Account</h3>
+              <span id="main-balance">$6,700.56</span>
+            </div>
+            <div id="expenses-account" class="account">
+              <h3>Expenses</h3>
+              <span id="expenses-balance">$5,134.63</span>
+            </div>
+            <div id="savings-account" class="account">
+              <h3>Savings</h3>
+              <span id="savings-balance">$36,500.12</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spendings -->
+        <div id="spendings-outer" class="spendings-outer">
+          <h2>Spendings</h2>
+          <div id="spendings-inner" class="spendings-inner">
+            <div class="spend-row">
+              <span>Rent</span><span>$1,450</span>
+            </div>
+            <div class="spend-row">
+              <span>Groceries</span><span>$564</span>
+            </div>
+            <div class="spend-row">
+              <span>Restaurants</span><span>$123</span>
+            </div>
+            <div class="spend-row">
+              <span>Transport</span><span>$81</span>
+            </div>
+            <div class="spend-row">
+              <span>Internet</span><span>$50</span>
+            </div>
+          </div>
+        </div>
+      </section>
+     
     </main>
 
   </div>  
