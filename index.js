@@ -1,4 +1,4 @@
-const accounts = [
+const accountsData = [
   {
     id: 1,
     title: "Main Account",
@@ -55,34 +55,48 @@ const accounts = [
 
 const wrapper = document.getElementById('wrapper');
 const spendingsCol = document.getElementById('spendings-col')
+const payBtn = document.getElementById('pay-btn')
 
-document.getElementById('accounts').addEventListener('click', (e) => {
+payBtn.addEventListener('click', () => {
+  console.log('clicked')
+})
 
-  wrapper.classList.toggle('two-cols'); // update layout for two col view (1096px max-width)
-  spendingsCol.classList.toggle('hidden'); // show the spendings column
 
-  if (e.target.id === 'main-account') {
-    console.log('main account clicked')
-  } else if (e.target.id === 'expenses-account') {
-    console.log('expenses account clicked')
-  } else if (e.target.id === 'savings-account') {
-    console.log('savings account clicked')
+document.getElementById('accounts-container').addEventListener('click', (e) => {
+
+  if (e.target.id === 'account-1') {
+    renderSpendings(0)
+  } else if (e.target.id === 'account-2') {
+    renderSpendings(1)
+  } else if (e.target.id === 'account-3') {
+    renderSpendings(2)
+  } 
+
+
+  // if (spendingsCol.classList.contains('hidden')) {
+
+  // }
+
+  else {
+    spendingsCol.classList.add('hidden');
+    wrapper.classList.remove('two-cols'); 
   }
 });
 
 // page load - render account data
 
 function renderAccounts() {
-  const accountsCol = document.getElementById('accounts');
+  const accounts = document.getElementById('accounts');
   let accountsHtml = '';
+  // use destructuring for account properties
 
-  accounts.forEach(account => {
+  accountsData.forEach(account => { // iterate through accounts data
     console.log(account.id)
     console.log(account.title)
     console.log(account.balance)
 
     accountsHtml += `
-      <div id="account-${account.id}" class="account selected">
+      <div id="account-${account.id}" class="account">
         <h3>${account.title}</h3>
         <span>$ ${account.balance.toLocaleString()}</span>
       </div>
@@ -90,10 +104,38 @@ function renderAccounts() {
 
   })
 
-  accountsCol.innerHTML = accountsHtml;
+  accounts.innerHTML = accountsHtml;
 }
 
-renderAccounts(); // render accounts on page load
+// render spending data based on selected account
+function renderSpendings(index) {
+  wrapper.classList.add('two-cols');
+  spendingsCol.classList.remove('hidden');
 
-// get correct spendings data 
-// accounts[i].spendings = array of objects
+  const spendings = document.getElementById('spendings')
+  let spendingsHtml = '';
+
+  if (!accountsData[index].spendings.length) {
+    console.log('no spending data')
+    // add 'info' class, 
+    spendingsHtml = `
+    <div>
+      <span>No spending data available.</span>
+    </div>`
+  }
+
+  // the the right index for the accounts data
+  accountsData[index].spendings.forEach(account => {
+    spendingsHtml += `
+    <div class="spend-row">
+      <span>${account.category}</span><span>$ ${account.spent.toLocaleString()}</span>
+    </div>
+    `
+  })
+
+  spendings.innerHTML = spendingsHtml;
+
+}
+
+
+renderAccounts(); // render accounts on page load
