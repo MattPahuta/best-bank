@@ -1,57 +1,4 @@
-const accountsData = [
-  {
-    id: 1,
-    title: "Main Account",
-    balance: 6700.56,
-    spendings: [
-      {
-          category: "Rent",
-          spent: 1450
-      },
-      {
-          category: "Groceries",
-          spent: 564
-      },
-      {
-          category: "Restaurants",
-          spent: 123
-      },
-      {
-          category: "Transport",
-          spent: 81
-      },
-      {
-          category: "Internet",
-          spent: 50
-      }
-    ]
-  },
-  {
-    id: 2,
-    title: "Expenses",
-    balance: 5134.63,
-    spendings: [
-      {
-          category: "Netflix",
-          spent: 19.99
-      },
-      {
-          category: "HBO Max",
-          spent: 14.99
-      },
-      {
-          category: "Setapp",
-          spent: 9.99
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: "Savings",
-    balance: 36500.12,
-    spendings: []
-  }
-]
+import accountsData from './data.js'
 
 const wrapper = document.getElementById('wrapper');
 const spendingsCol = document.getElementById('spendings-col');
@@ -60,40 +7,26 @@ const btns = document.querySelectorAll('.btn');
 // add listener to buttons
 btns.forEach(btn => {
   btn.addEventListener('click', () => {
-    console.log('clicked')
     spendingsCol.classList.add('hidden');
     wrapper.classList.remove('two-cols'); 
     deselectAccounts();
   })
 });
-
+// listen for clicks on accounts
 document.getElementById('accounts-container').addEventListener('click', (e) => {
-  // get the clicked account based on account ID
-  switch (e.target.id) {
-    case '1':
-      deselectAccounts();
-      e.target.classList.add('selected');
-      renderSpendings(0);
-      break;
-    case '2':
-      deselectAccounts();
-      e.target.classList.add('selected');
-      renderSpendings(1);
-      break;
-    case '3':
-      deselectAccounts();
-      e.target.classList.add('selected');
-      renderSpendings(2);
-      break;
-  } 
-
+  const selectedAccount = e.target;
+  if (selectedAccount.classList.contains('account')) {
+    deselectAccounts();
+    e.target.classList.add('selected');
+    renderSpendings(Number(selectedAccount.id)) // renderSpendings takes an index value
+  }
 });
 
 // remove selected styling from accounts
 function deselectAccounts() {
   const allAccounts = document.querySelectorAll('.account');
   allAccounts.forEach(account => {
-    account.classList.remove('selected')
+    account.classList.remove('selected');
   });
 }
 
@@ -114,27 +47,32 @@ function renderAccounts() {
   accounts.innerHTML = accountsHtml;
 }
 
-// render spending data based on selected account
-function renderSpendings(index) {
-  wrapper.classList.add('two-cols');
-  spendingsCol.classList.remove('hidden');
+function renderSpendings(targetId) { // html id of clicked account
+  wrapper.classList.add('two-cols'); // make layout two columns
+  spendingsCol.classList.remove('hidden'); // show the spendingsCol div
+  // get a match for the clicked account id and corresponding id in accountsData
+  const targetAccountObj = accountsData.filter(account => { // filter through accountsData
+    return account.id === targetId; // match passed in id with accountsData obj id
+  })[0];
 
-  const spendings = document.getElementById('spendings')
-  let spendingsHtml = '';
+  const spendings = document.getElementById('spendings') // get spendings parent div
+  let spendingsHtml = ''; // initialize empty html
   // check if there is spending data available
-  if (!accountsData[index].spendings.length) { 
+  if (!targetAccountObj.spendings.length) { // if not, display appropriate messaging
     spendingsHtml = `
     <div>
       <span class='info'>No spending data available.</span>
     </div>`
   }
-  // get the right index for the accounts data
-  accountsData[index].spendings.forEach(account => {
+
+  let barWidth = 100; // set initial spending bar width
+  targetAccountObj.spendings.forEach(account => {   // get the right index for the accounts data
     spendingsHtml += `
-    <div class="spend-row">
+    <div class="spend-row" style="width: ${barWidth}%">
       <span>${account.category}</span><span>$ ${account.spent.toLocaleString()}</span>
     </div>
     `
+    barWidth -= 15; //decrement spending bar width for subsequent iterations
   });
   spendings.innerHTML = spendingsHtml;
 }

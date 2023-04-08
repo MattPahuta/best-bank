@@ -91,12 +91,19 @@ h2 {
 }
 
 /* Components and Utility classes */
+
 .wrapper {
   margin-inline: auto;
-  padding: 2.25rem 0;
+  padding: 2.25rem 1rem;
   max-width: 730px;
   /* max-width: 1096px; */
   width: 100%;
+}
+
+@media (min-width: 760px) {
+  .wrapper {
+    padding: 2.25rem 0;
+  }
 }
 
 .two-cols {
@@ -189,7 +196,7 @@ header img {
 }
 
 .nav-item a:hover {
-  text-decoration: underline;
+  border-bottom: 2px solid var(--clr-black);
 }
 
 .nav-item__active {
@@ -197,7 +204,6 @@ header img {
 }
 
 /* Main Styles */
-
 .button-container {
   margin-bottom: 2.625rem;
   display: flex;
@@ -228,7 +234,6 @@ header img {
 	padding: 2.75rem;
 	border: 5px solid var(--clr-orange);
 	border-radius: 15px;
-	/* background: var(--clr-light-orange); */
 }
 
 .account > * {
