@@ -5,17 +5,13 @@ WHITE: #FFFFFF
 LIGHT: #FDF7F4
 ORANGE: #FFD18C
 DARK ORANGE: #FFA724
-
 font-family: 'Inter', sans-serif;
-
-font-sizes
+font-sizes:
 40px 
 30px
 25px
 20px
-
 */
-
 
 /* ----------------- */
 /* Custom Properties */
@@ -35,7 +31,6 @@ font-sizes
   --fs-med: 1.5rem;
   --fs-sml: 1.25rem;
 }
-
 
 /* ======================== */
 /* Reset and General Styles */
@@ -95,7 +90,6 @@ h2 {
   font-size: var(--fs-xlrg);
 }
 
-
 /* Components and Utility classes */
 .wrapper {
   margin-inline: auto;
@@ -115,23 +109,23 @@ h2 {
   font-family: inherit;
   padding: 0;
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   font-size: var(--fs-large);
   font-weight: 700;
-
   border-radius: 50px;
   border: 5px solid var(--clr-orange);
   width: 275px;
   height: 77px;
+  transition: 220ms all ease-in-out;
 }
 
 .btn:hover,
 .btn:active {
   background: var(--clr-orange);
+  box-shadow: 0 0.75rem 0.75rem rgba(0,0,0,0.3);
+  transform: translateY(-0.25rem);
 }
 
 .hidden {
@@ -183,7 +177,6 @@ header img {
   justify-content: center;
   flex-wrap: wrap;
   gap: 3.5rem;
-
 }
 
 .nav-item {
@@ -203,7 +196,6 @@ header img {
   font-weight: 700;
 }
 
-
 /* Main Styles */
 
 .button-container {
@@ -212,7 +204,6 @@ header img {
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-
 }
 
 .accounts-container {
@@ -254,7 +245,6 @@ header img {
 }
 
 /* Spendings column */
-
 .spendings {
   padding: 1.5rem 0;
   display: flex;
