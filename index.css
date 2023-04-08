@@ -138,6 +138,10 @@ h2 {
   display: none;
 }
 
+.info {
+  color: var(--clr-orange);
+}
+
 /* for screen-readers only */
 .sr-only {
   position: absolute;
@@ -178,7 +182,7 @@ header img {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: 3.5rem;
 
 }
 

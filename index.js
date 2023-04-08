@@ -54,56 +54,63 @@ const accountsData = [
 ]
 
 const wrapper = document.getElementById('wrapper');
-const spendingsCol = document.getElementById('spendings-col')
-const payBtn = document.getElementById('pay-btn')
+const spendingsCol = document.getElementById('spendings-col');
+const btns = document.querySelectorAll('.btn');
 
-payBtn.addEventListener('click', () => {
-  console.log('clicked')
-})
-
-
-document.getElementById('accounts-container').addEventListener('click', (e) => {
-
-  if (e.target.id === 'account-1') {
-    renderSpendings(0)
-  } else if (e.target.id === 'account-2') {
-    renderSpendings(1)
-  } else if (e.target.id === 'account-3') {
-    renderSpendings(2)
-  } 
-
-
-  // if (spendingsCol.classList.contains('hidden')) {
-
-  // }
-
-  else {
+// add listener to buttons
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    console.log('clicked')
     spendingsCol.classList.add('hidden');
     wrapper.classList.remove('two-cols'); 
-  }
+    deselectAccounts();
+  })
 });
 
-// page load - render account data
+document.getElementById('accounts-container').addEventListener('click', (e) => {
+  // get the clicked account based on account ID
+  switch (e.target.id) {
+    case '1':
+      deselectAccounts();
+      e.target.classList.add('selected');
+      renderSpendings(0);
+      break;
+    case '2':
+      deselectAccounts();
+      e.target.classList.add('selected');
+      renderSpendings(1);
+      break;
+    case '3':
+      deselectAccounts();
+      e.target.classList.add('selected');
+      renderSpendings(2);
+      break;
+  } 
 
+});
+
+// remove selected styling from accounts
+function deselectAccounts() {
+  const allAccounts = document.querySelectorAll('.account');
+  allAccounts.forEach(account => {
+    account.classList.remove('selected')
+  });
+}
+
+// render account data
 function renderAccounts() {
   const accounts = document.getElementById('accounts');
   let accountsHtml = '';
-  // use destructuring for account properties
 
   accountsData.forEach(account => { // iterate through accounts data
-    console.log(account.id)
-    console.log(account.title)
-    console.log(account.balance)
-
+    const {id, title, balance } = account;
     accountsHtml += `
-      <div id="account-${account.id}" class="account">
-        <h3>${account.title}</h3>
-        <span>$ ${account.balance.toLocaleString()}</span>
+      <div id="${id}" class="account">
+        <h3>${title}</h3>
+        <span>$ ${balance.toLocaleString()}</span>
       </div>
     `
-
-  })
-
+  });
   accounts.innerHTML = accountsHtml;
 }
 
@@ -114,28 +121,22 @@ function renderSpendings(index) {
 
   const spendings = document.getElementById('spendings')
   let spendingsHtml = '';
-
-  if (!accountsData[index].spendings.length) {
-    console.log('no spending data')
-    // add 'info' class, 
+  // check if there is spending data available
+  if (!accountsData[index].spendings.length) { 
     spendingsHtml = `
     <div>
-      <span>No spending data available.</span>
+      <span class='info'>No spending data available.</span>
     </div>`
   }
-
-  // the the right index for the accounts data
+  // get the right index for the accounts data
   accountsData[index].spendings.forEach(account => {
     spendingsHtml += `
     <div class="spend-row">
       <span>${account.category}</span><span>$ ${account.spent.toLocaleString()}</span>
     </div>
     `
-  })
-
+  });
   spendings.innerHTML = spendingsHtml;
-
 }
-
 
 renderAccounts(); // render accounts on page load
