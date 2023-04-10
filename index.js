@@ -2,25 +2,32 @@ import accountsData from './data.js'
 
 const wrapper = document.getElementById('wrapper');
 const spendingsCol = document.getElementById('spendings-col');
-const btns = document.querySelectorAll('.btn');
-
-// add listener to buttons
-btns.forEach(btn => {
-  btn.addEventListener('click', () => {
+// update: combine listeners under single parent element
+wrapper.addEventListener('click', (e) => {
+  const selectedAccount = e.target.closest('.account')
+  if (e.target.tagName === 'BUTTON') {
     spendingsCol.classList.add('hidden');
     wrapper.classList.remove('two-cols'); 
     deselectAccounts();
-  })
-});
-// listen for clicks on accounts
-document.getElementById('accounts-container').addEventListener('click', (e) => {
-  const selectedAccount = e.target;
-  if (selectedAccount.classList.contains('account')) {
+  } else if (selectedAccount) {
     deselectAccounts();
-    e.target.classList.add('selected');
-    renderSpendings(Number(selectedAccount.id)) // renderSpendings takes an index value
+    selectedAccount.classList.add('selected');
+    renderSpendings(Number(selectedAccount.id));
   }
 });
+
+// listen for clicks on accounts
+// document.getElementById('accounts-container').addEventListener('click', (e) => {
+//   const selectedAccount = e.target.closest('.account')
+
+//   if (selectedAccount) {
+//     deselectAccounts();
+//     selectedAccount.classList.add('selected');
+//     renderSpendings(Number(selectedAccount.id));
+//   }
+
+
+// });
 
 // remove selected styling from accounts
 function deselectAccounts() {

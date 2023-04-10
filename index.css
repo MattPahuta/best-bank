@@ -195,11 +195,11 @@ header img {
   text-decoration: none;
 }
 
-.nav-item a:hover {
+.nav-item a:not(.nav-link__active):hover {
   border-bottom: 2px solid var(--clr-black);
 }
 
-.nav-item__active {
+.nav-link__active {
   font-weight: 700;
 }
 
